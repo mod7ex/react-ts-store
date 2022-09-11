@@ -51,4 +51,6 @@ module.exports = override(
 
 ---
 
-## \* 3 add scss
+## \* 3 add scss globally
+
+## \* 4 Create a toasting hook
