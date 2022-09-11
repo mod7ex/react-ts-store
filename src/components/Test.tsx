@@ -1,3 +1,5 @@
+import "@/test.scss";
+
 export default function Test() {
-  return <h1>Hello</h1>;
+  return <h1 className="title">Hello</h1>;
 }
