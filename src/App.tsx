@@ -1,14 +1,17 @@
-import useToast from "./hooks/useToast";
+import useToast from "~/hooks/useToast";
+import ToastsList from "~/partials/ToastsList";
 
 function App() {
-  const toast = useToast();
+  const toaster = useToast();
 
   const handelClick = () => {
-    toast({ content: "some shit", title: "thhhhh", ttl: 333 });
+    toaster.success({ title: "Title", content: "some ipsom data" });
   };
 
   return (
     <>
+      <ToastsList />
+      <br />
       <button onClick={() => handelClick()}>click</button>
     </>
   );

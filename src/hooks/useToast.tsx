@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { uid } from "~/utils";
+import { useAppDispatch } from "~/store/hooks";
+import { drop, add } from "~/store/slices/toasts";
+import type { AppDispatch } from "~/store";
 
-interface IToast {
-  content: string;
-  title?: string;
-  ttl: number;
-}
+type ToasterGenre = (payload: Omit<IToast, "type">) => ReturnType<AppDispatch>;
 
-const toastsList = new Map<string, IToast>(); // Map works well with frequent deletion and adding
+type ToastActions = Record<ToastType, ToasterGenre> & { drop: typeof drop };
 
-export default function useToast() {
-  const [map, setMap] = useState(toastsList);
+export default function useToast(): ToastActions {
+  const dispatch = useAppDispatch();
 
-  return (payload: IToast) => {
-    toastsList.set(uid(), payload);
-    console.log(toastsList);
-    setMap((v) => new Map([...Array.from(v), [uid(), payload]]));
+  return {
+    success: (payload) => dispatch(add({ ...payload, type: "success" })),
+    primary: (payload) => dispatch(add({ ...payload, type: "primary" })),
+    danger: (payload) => dispatch(add({ ...payload, type: "danger" })),
+    info: (payload) => dispatch(add({ ...payload, type: "info" })),
+    warn: (payload) => dispatch(add({ ...payload, type: "warn" })),
+    drop,
   };
 }
