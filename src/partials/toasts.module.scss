@@ -1,0 +1,46 @@
+$p: 0.3em;
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: max-content;
+  padding-top: $p;
+  @include flex($direction: column, $justify: flex-start);
+}
+
+.toast {
+  border: 2px solid $primary-color;
+  border-radius: $br-sm;
+  margin-bottom: $p;
+  max-width: $w-sm;
+  padding: 2 * $p;
+  width: 100%;
+  background-color: $white;
+
+  @include flex($justify: space-between);
+
+  span {
+    margin-right: 2 * $p;
+
+    b,
+    p {
+      display: inline-block;
+
+      @include tablet {
+        color: red;
+      }
+    }
+
+    b {
+      margin-right: 2 * $p;
+    }
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

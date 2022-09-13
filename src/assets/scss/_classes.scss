@@ -1,0 +1,9 @@
+.raw-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}

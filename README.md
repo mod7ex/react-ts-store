@@ -44,7 +44,7 @@ module.exports = override(
       "@/*": ["./src/components/*"]
     },
 
-    ...rest
+    ...
   },
 
 ```
@@ -53,4 +53,4 @@ module.exports = override(
 
 ## \* 3 add scss globally
 
-## \* 4 Create a toasting hook
+## \* 4 Create a toasting hook (we used `https://react-icons.github.io` for icons)

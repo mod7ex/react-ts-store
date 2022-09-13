@@ -25,7 +25,7 @@ export const toastSlice = createSlice({
     },
 
     drop: (state, action: PayloadAction<ToastsList["key"]>) => {
-      state.list = state.list.filter(({ key }) => key === action.payload);
+      state.list = state.list.filter(({ key }) => key !== action.payload);
     },
   },
 });

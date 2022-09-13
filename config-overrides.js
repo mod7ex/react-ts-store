@@ -1,10 +1,10 @@
 const { override, addWebpackResolve, adjustStyleLoaders } = require("customize-cra");
 const path = require("path");
 
-const additionalData = `@import "./src/assets/scss/_variables.scss";
-                        @import "./src/assets/scss/_reset.scss";
-                        @import "./src/assets/scss/_mixins.scss";
-                        @import "./src/assets/scss/index.scss";`;
+const additionalData = `@use "./src/assets/scss/_variables.scss"; 
+                        @use "./src/assets/scss/_classes.scss"; 
+                        @use "./src/assets/scss/_reset.scss"; 
+                        @use "./src/assets/scss/_mixins.scss";`;
 
 module.exports = override(
   addWebpackResolve({
@@ -17,7 +17,7 @@ module.exports = override(
   adjustStyleLoaders((loader) => {
     // https://github.com/arackaf/customize-cra/blob/master/api.md#addlessloaderloaderoptions
 
-    // loader.use[1].options.additionalData = `@import "./src/assets/scss/_variables.scss";`;
+    // loader.use[1].options.additionalData = additionalData;
 
     if (loader.use[4]) {
       // Only with Sass-Loaders
