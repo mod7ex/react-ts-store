@@ -3,9 +3,9 @@ import { uid } from "~/utils";
 
 export const TTL = 3000;
 
-type ToastsList = { key: string; value: IToast };
+type ToastPayload = { key: string; value: IToast };
 
-const initialState: { list: ToastsList[] } = {
+const initialState: { list: ToastPayload[] } = {
   list: [],
 };
 
@@ -24,7 +24,7 @@ export const toastSlice = createSlice({
       state.list.push({ key: uid(), value: { content, title, type } });
     },
 
-    drop: (state, action: PayloadAction<ToastsList["key"]>) => {
+    drop: (state, action: PayloadAction<ToastPayload["key"]>) => {
       state.list = state.list.filter(({ key }) => key !== action.payload);
     },
   },
