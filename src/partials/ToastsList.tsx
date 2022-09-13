@@ -5,7 +5,7 @@ import { HiXCircle } from "react-icons/hi";
 import { drop } from "~/store/slices/toasts";
 
 const Toast: React.FC<IToast & { _key: string }> = ({ content, title, type, _key }) => {
-  console.log(_key);
+  // the type will be add later
 
   return (
     <div className={styles.toast}>
@@ -23,6 +23,8 @@ const Toast: React.FC<IToast & { _key: string }> = ({ content, title, type, _key
 export default function ToastsList() {
   const dispatch = useAppDispatch();
 
+  const toastsList = useAppSelector((s) => s.toasts.list);
+
   const _onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
     const _parent = target.parentElement as HTMLElement;
@@ -33,12 +35,9 @@ export default function ToastsList() {
     const _item = _targets.find(({ tagName, dataset }) => tagName === "BUTTON" && dataset.key !== undefined);
 
     if (_item) {
-      console.log(_item.dataset.key);
       dispatch(drop(_item.dataset.key!));
     }
   };
-
-  const toastsList = useAppSelector((s) => s.toasts.list);
 
   return toastsList.length ? (
     <div className={styles.container} onClick={_onClick}>

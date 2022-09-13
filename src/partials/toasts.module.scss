@@ -30,9 +30,9 @@ $p: 0.3em;
     p {
       display: inline-block;
 
-      @include tablet {
-        color: red;
-      }
+      // @include tablet {
+      //   color: red;
+      // }
     }
 
     b {
